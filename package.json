@@ -4,8 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun --watch index.ts",
-    "test": "bun test"
+    "dev": "bun --watch index.ts",
+    "start": "bun index.ts",
+    "test": "bun test",
+    "bg": "tmux new -s proxy -d 'bun run start'",
+    "attach": "tmux attach -t proxy",
+    "stop": "tmux kill-session -t proxy"
   },
   "devDependencies": {
     "@types/bun": "latest"
