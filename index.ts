@@ -9,6 +9,10 @@ serve({
     const method = req.method;
 
     try {
+      if (req.method === "GET" && url.pathname === "/health") {
+        return Response.json({ status: "ok", uptime: process.uptime() });
+      }
+
       const route = findRoute(url.pathname);
 
       if (!route) {
